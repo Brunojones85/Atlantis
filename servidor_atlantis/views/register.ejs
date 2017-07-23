@@ -1,0 +1,12 @@
+<% include partials/headerLoginERegister %>
+
+<div class="wrapper">
+  <form class="form-signin" action="/register" method="POST">
+    <h2 class="form-signin-heading">Registre-se</h2>
+    <input type="text" class="form-control" name="username" placeholder="seuemail@gmail.com" required="" autofocus="">
+    <input type="password" class="form-control" name="password" placeholder="senha" required="">
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Subimit</button>
+  </form>
+</div>
+
+<% include partials/footer %>

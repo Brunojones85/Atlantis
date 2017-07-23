@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Atlantis</title>
+  <link rel="stylesheet" type="text/css" href="../../css/atlantisLoginERegister.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+  <script type="text/javascript" src="../../js/paper.js"></script>
+
+  <!-- SOCKET IO -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+  var socket = io.connect('http://localhost:3000');
+  socket.on('news', function (data) {
+    console.log(data);
+    socket.emit('my other event', { my: 'data' });
+  });
+  </script>
+  <!-- SOCKET IO -->
+</head>
+
+<body>
+  <nav class="navbar navbar-default">
+
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/"><strong>Atlantis</strong> <i class="fa fa-code" aria-hidden="true"></i></a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-left">
+          <li class="sobre"><a href="#">Sobre</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <% if(!currentUser){ %>
+            <li><a href="/login">Login <i class="fa fa-sign-in" aria-hidden="true"></i></a></li>
+            <li><a href="/register">Registre-se <i class="fa fa-user-plus" aria-hidden="true"></i></a></li>
+            <% } else { %>
+              <li><a href="#"><strong>Logado como:</strong> <%= currentUser.username %></a></li>
+              <li><a href="/logout">Logout <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
+              <% } %>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
