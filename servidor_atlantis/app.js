@@ -31,7 +31,7 @@ io.on('connection', function (socket) {
 
 //create new medidas
 app.get("/:medida", function(req, res){
-   
+
     var medida    = parseFloat(req.params.medida);
     var date      =  new Date;
     var newMedida = {medida: medida, date: date};
@@ -49,11 +49,10 @@ app.get("/:medida", function(req, res){
             res.send('ok');
         }
     });
-        
+
 });
 
 //inicializa o servidor na porta 3000
 app.listen(3000, function() {
   console.log('Acesse o servidor http://localhost:3000');
 });
-
