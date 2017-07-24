@@ -1,4 +1,4 @@
-var express       = require("express"),
+var express   = require("express"),
 app           = express(),
 bodyParser    = require("body-parser"),
 mongoose      = require("mongoose"),
@@ -15,6 +15,10 @@ mongoose.connect("mongodb://localhost/atlantis",{useMongoClient: true});
 
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/'));
+app.use(bodyParser.urlencoded({
+    extended: false
+}))
+app.use(bodyParser.json());
 
 
 //PASSPORT CONFIG
@@ -62,7 +66,9 @@ app.get("/register", function(req, res){
 });
 
 app.post("/register", function(req, res){
+  console.log(req.body);
   var newUser = new User({username: req.body.username});
+  console.log(req.body);
   User.register(newUser, req.body.password, function(err, user){
     if(err){
       console.log(err);
@@ -81,15 +87,15 @@ app.get("/login", function(req, res){
 
 app.post("/login", passport.authenticate("local",
 {
-  successRedirect: "/grafico",
-  failureRedirect: "/login"
-}), function(req, res){
+    successRedirect: "/grafico",
+    failureRedirect: "/login"
+  }), function(req, res){
 });
 
 //AUTH ROUTES LOGOUT
 app.get("/logout", function(req, res){
   req.logout();
-  res.redirect("/grafico");
+  res.redirect("/");
 });
 
 function isLoggedIn(req, res, next){
