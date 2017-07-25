@@ -2,10 +2,10 @@ var express   = require("express"),
 app           = express(),
 bodyParser    = require("body-parser"),
 mongoose      = require("mongoose"),
-io            = require("socket.io")(server),
 passport      = require("passport"),
 LocalStrategy = require("passport-local"),
-server        = require("http").Server(app),
+http          = require("http").Server(app),
+io            = require("socket.io")(http),
 Medida        = require("./models/medidas"),
 User          = require("./models/user"),
 fs            = require("fs");
@@ -40,10 +40,9 @@ app.use(function(req, res, next){
 });
 
 //SOCKET IO
-io.on('connection', function (socket) {
-  socket.emit('news', { hello: 'world' });
-  socket.on('my other event', function (data) {
-    console.log(data);
+io.on('connection', function(socket){
+  socket.on('medida', function(medida){
+    io.emit('medida', medida);
   });
 });
 
@@ -133,6 +132,6 @@ app.get("/:medida", function(req, res){
 });
 
 //START SERVER
-app.listen(3000, function() {
+http.listen(3000, function() {
   console.log('Acesse o servidor http://localhost:3000');
 });
