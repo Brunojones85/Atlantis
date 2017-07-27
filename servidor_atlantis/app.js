@@ -130,7 +130,20 @@ app.get("/:medida", function(req, res){
   });
 });
 
+//SHOW ALL medidas
+app.get("/grafico", function(req, res){
+    // Get all medidas from DB
+    Medida.find({}, function(err, allMedidas){
+       if(err){
+           console.log(err);
+       } else {
+          res.render("grafico",{medidas:allMedidas});
+          console.log(medidas);
+       }
+    });
+});
+
 //START SERVER
-http.listen(3000, function() {
+app.listen(3000, function() {
   console.log('Acesse o servidor http://localhost:3000');
 });
