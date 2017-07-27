@@ -4,8 +4,8 @@ bodyParser    = require("body-parser"),
 mongoose      = require("mongoose"),
 passport      = require("passport"),
 LocalStrategy = require("passport-local"),
-http          = require("http").Server(app),
-io            = require("socket.io")(http),
+http          = require("http"),
+io        = require("socket.io"),
 Medida        = require("./models/medidas"),
 User          = require("./models/user"),
 fs            = require("fs");
@@ -39,10 +39,6 @@ app.use(function(req, res, next){
   next();
 });
 
-// //SOCKET IO
-// function recebe_valor_arduino (medida) {
-//      io.emit('medida', medida);
-// }
 
 //INDEX ROUTE, FAVCON(fix) e SOBRE
 app.get("/", function(req, res){
@@ -123,7 +119,7 @@ app.get("/:medida", function(req, res){
       console.log(err);
     } else {
       //redirect back to index
-      io.emit("novo", newMedida);
+      socket.emit("medida", newMedida);
       console.log("recebi a medida: " + medida);
       res.send('ok');
     }
@@ -146,4 +142,15 @@ app.get("/:medida", function(req, res){
 //START SERVER
 app.listen(3000, function() {
   console.log('Acesse o servidor http://localhost:3000');
+});
+
+var wsServer = http.createServer(function() {
+  res.send('websocket server');
+});
+
+wsServer.listen(8000);
+var socket = io.listen(wsServer);
+
+socket.on('connection', function(client) {
+  console.log('ws connected');
 });
