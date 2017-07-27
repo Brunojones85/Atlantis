@@ -1,6 +1,8 @@
 <% include partials/headerGrafico %>
 
-<%= medidas %>
+<p><% = medidas.medida %></p>
+<p><% = medidas.date %></p>
+
 
 <svg id="fillgauge3" width="19%" height="200" onclick="gauge3.update(NewValue());"></svg>
 <script language="JavaScript">
