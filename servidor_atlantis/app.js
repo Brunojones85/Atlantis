@@ -138,6 +138,7 @@ app.get("/grafico", function(req, res){
            console.log(err);
        } else {
           res.render("grafico",{medidas:allMedidas});
+          console.log(medidas);
        }
     });
 });
