@@ -40,11 +40,9 @@ app.use(function(req, res, next){
 });
 
 //SOCKET IO
-io.on('connection', function(socket){
-  socket.on('medida', function(medida){
-    io.emit('medida', medida);
-  });
-});
+function recebe_valor_arduino (medida) {
+     io.emit('medida', medida);
+}
 
 //INDEX ROUTE, FAVCON(fix) e SOBRE
 app.get("/", function(req, res){
@@ -92,9 +90,10 @@ app.post("/login", passport.authenticate("local",
 });
 
 //AUTH ROUTES LOGOUT
-app.get("/logout", function(req, res){
-  req.logout();
-  res.redirect("/");
+app.get('/logout', function (req, res){
+  req.session.destroy(function (err) {
+    res.redirect('/');
+  });
 });
 
 function isLoggedIn(req, res, next){
