@@ -39,10 +39,10 @@ app.use(function(req, res, next){
   next();
 });
 
-//SOCKET IO
-function recebe_valor_arduino (medida) {
-     io.emit('medida', medida);
-}
+// //SOCKET IO
+// function recebe_valor_arduino (medida) {
+//      io.emit('medida', medida);
+// }
 
 //INDEX ROUTE, FAVCON(fix) e SOBRE
 app.get("/", function(req, res){
@@ -130,18 +130,18 @@ app.get("/:medida", function(req, res){
   });
 });
 
-//SHOW ALL medidas
-app.get("/grafico", function(req, res){
-    // Get all medidas from DB
-    Medida.find({}, function(err, allMedidas){
-       if(err){
-           console.log(err);
-       } else {
-          res.render("grafico",{medidas:allMedidas});
-          console.log(medidas);
-       }
-    });
-});
+// //SHOW ALL medidas
+// app.get("/grafico", function(req, res){
+//     // Get all medidas from DB
+//     Medida.find({}, function(err, allMedidas){
+//        if(err){
+//            console.log(err);
+//        } else {
+//           res.render("grafico",{medidas:allMedidas});
+//           console.log(medidas);
+//        }
+//     });
+// });
 
 //START SERVER
 app.listen(3000, function() {
