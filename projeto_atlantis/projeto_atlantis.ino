@@ -73,7 +73,7 @@ void envia_dados () {
             client.print("GET /");
             client.print(distance);
             client.println(" HTTP/1.0");
-            client.println("Host: 45.55.170.244:3000");
+            client.println("Host: 45.55.170.244:8080");
             client.println();
             ultimo_interacao = millis();
         }
