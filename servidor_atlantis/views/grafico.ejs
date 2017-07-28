@@ -35,7 +35,8 @@
       socket.on('medida', function (data) {
         console.log(data);
         var maxCm = 40;
-        var cmReal = (maxCm - data.medida) * 2.5;
+        var maxPercentual = 100;
+        var cmReal = (maxCm - data.medida) * (maxPercentual/maxCm);
         gauge3.update(cmReal);
       });
 </script>
