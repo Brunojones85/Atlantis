@@ -34,7 +34,9 @@
     var socket = io.connect('http://45.55.170.244:3000');
       socket.on('medida', function (data) {
         console.log(data);
-        gauge3.update(data.medida);
+        var maxCm = 100;
+        var cmReal = maxCm - data.medida;
+        gauge3.update(cmReal);
       });
 </script>
 
