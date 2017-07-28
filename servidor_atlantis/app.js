@@ -4,8 +4,9 @@ bodyParser    = require("body-parser"),
 mongoose      = require("mongoose"),
 passport      = require("passport"),
 LocalStrategy = require("passport-local"),
+server        = require('http').Server(app),
+io            = require('socket.io')(server),
 http          = require("http"),
-io        = require("socket.io"),
 Medida        = require("./models/medidas"),
 User          = require("./models/user"),
 fs            = require("fs");
@@ -119,38 +120,19 @@ app.get("/:medida", function(req, res){
       console.log(err);
     } else {
       //redirect back to index
-      socket.emit("medida", newMedida);
+      io.emit("medida", newMedida);
       console.log("recebi a medida: " + medida);
       res.send('ok');
     }
   });
 });
 
-// //SHOW ALL medidas
-// app.get("/grafico", function(req, res){
-//     // Get all medidas from DB
-//     Medida.find({}, function(err, allMedidas){
-//        if(err){
-//            console.log(err);
-//        } else {
-//           res.render("grafico",{medidas:allMedidas});
-//           console.log(medidas);
-//        }
-//     });
-// });
+server.listen(3000);
 
-//START SERVER
-app.listen(3000, function() {
-  console.log('Acesse o servidor http://localhost:3000');
-});
-
-var wsServer = http.createServer(function() {
-  res.send('websocket server');
-});
-
-wsServer.listen(8000);
-var socket = io.listen(wsServer);
-
-socket.on('connection', function(client) {
-  console.log('ws connected');
+io.on('connection', function (socket) {
+  // console.log('novo cliente');
+  // socket.emit('news', { hello: 'world' });
+  // socket.on('my other event', function (data) {
+  //   console.log(data);
+  // });
 });

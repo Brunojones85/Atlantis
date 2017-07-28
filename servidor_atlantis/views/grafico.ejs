@@ -1,6 +1,5 @@
 <% include partials/headerGrafico %>
 
-
 <svg id="fillgauge3" width="19%" height="200" onclick="gauge3.update(NewValue());"></svg>
 <script language="JavaScript">
     var config2 = liquidFillGaugeDefaultSettings();
@@ -25,20 +24,15 @@
     }
 </script>
 
-<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+<script src="/socket.io/socket.io.js"></script>
 <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 
 <script>
-    var socket = new io();
-    socket.connect('ws://localhost:8000', {autoConnect: true});
-
-    socket.on('connect', function() {
-      console.log('socket io conectado!');
-    });
-
-    socket.on('medida', function(medida){
-      gauge3.update(medida);
-    });
+    var socket = io.connect('http://localhost:3000');
+      socket.on('medida', function (data) {
+        console.log(data);
+        gauge3.update(data.medida);
+      });
 </script>
 
 <% include partials/footer %>
