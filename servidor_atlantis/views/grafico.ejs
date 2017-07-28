@@ -1,6 +1,9 @@
 <% include partials/headerGrafico %>
 
-<svg id="fillgauge3" width="19%" height="200" onclick="gauge3.update(NewValue());"></svg>
+<div class="container gauge">
+  <svg id="fillgauge3" width="19%" height="200" onclick="gauge3.update(NewValue());"></svg>
+</div>
+
 <script language="JavaScript">
     var config2 = liquidFillGaugeDefaultSettings();
     config2.circleColor = "#D4AB6A";
@@ -28,7 +31,7 @@
 <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 
 <script>
-    var socket = io.connect('http://localhost:3000');
+    var socket = io.connect('http://45.55.170.244:3000');
       socket.on('medida', function (data) {
         console.log(data);
         gauge3.update(data.medida);
