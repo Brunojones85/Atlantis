@@ -31,12 +31,13 @@
 <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 
 <script>
-    var socket = io.connect('http://45.55.170.244:3000');
+    // var socket = io.connect('http://45.55.170.244:3000');
+    var socket = io.connect('http://localhost:3000');
       socket.on('medida', function (data) {
         console.log(data);
         var maxCm = 40;
         var maxPercentual = 100;
-        var cmReal = (maxCm - data.medida) * (maxPercentual/maxCm);
+        var cmReal = maxPercentual - ((maxCm - data.medida) * (maxPercentual/maxCm));
         gauge3.update(cmReal);
       });
 </script>
