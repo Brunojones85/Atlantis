@@ -72,8 +72,8 @@ void envia_dados () {
             Serial.println("Conectado ao servidor\n\n");
             client.print("GET /");
             client.print(distance);
-            client.println(" HTTP/1.0");
-            client.println("Host: 45.55.170.244:8080");
+            client.println("HTTP/1.0");
+            client.println("Host: 45.55.170.244:3000");
             client.println();
             ultimo_interacao = millis();
         }
@@ -108,10 +108,12 @@ float medir_distancia () {
     digitalWrite(trigPin, LOW);
     duration = pulseIn(echoPin, HIGH);
     distance = (duration / 2.0) / 29.1;
+
     if (distance >= 200 || distance <= 0) {
         Serial.println("fora de alcance");
         return -1.0;
     }
+
     Serial.print(distance);
     Serial.println(" cm");
     client.print(distance);

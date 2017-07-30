@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Atlantis</title>
+  <meta http-equiv="content-type" content="text-html; charset=utf-8"/>
   <link rel="stylesheet" type="text/css" href="../../css/grafico.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -10,13 +11,16 @@
 
     <script src="http://d3js.org/d3.v3.min.js" language="JavaScript"></script>
     <script src="../../js/liquidFillGauge.js" language="JavaScript"></script>
+    <script src= "https://cdn.zingchart.com/zingchart.min.js"></script>
+    <script> zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+    ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9","ee6b7db5b51705a13dc2339db3edaf6d"];</script>
     <style>
         .liquidFillGaugeText { font-family: Helvetica; font-weight: bold; }
     </style>
 
 </head>
 
-<body>
+<body ng-app="grafico">
   <nav class="navbar navbar-default">
 
     <div class="container-fluid">

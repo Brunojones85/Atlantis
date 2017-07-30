@@ -1,6 +1,9 @@
 <% include partials/headerGrafico %>
 
-<svg id="fillgauge3" width="19%" height="200" onclick="gauge3.update(NewValue());"></svg>
+<div class="container gauge">
+  <svg id="fillgauge3" width="19%" height="200" onclick="gauge3.update(NewValue());"></svg>
+</div>
+
 <script language="JavaScript">
     var config2 = liquidFillGaugeDefaultSettings();
     config2.circleColor = "#D4AB6A";
@@ -24,15 +27,30 @@
     }
 </script>
 
-<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+<script src="/socket.io/socket.io.js"></script>
 <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 
-
 <script>
-    socket.on('medida', function(medida){
-      gauge3.update(medida);
+    var socket = io.connect('http://45.55.170.244:3000');
+      socket.on('medida', function (data) {
+        console.log(data);
+        var maxCm = 40;
+        var maxPercentual = 100;
+        var cmReal = (maxCm - data.medida) * (maxPercentual/maxCm);
+        gauge3.update(cmReal);
+      });
 </script>
 
-
+<div id='myChart' ng-controller="GraficoController">
+    <style>
+      html, body, #myChart {
+        width:100%;
+        height:100%;
+      }
+      .zc-ref {
+        display: none;
+      }
+    </style>
+</div>
 
 <% include partials/footer %>
