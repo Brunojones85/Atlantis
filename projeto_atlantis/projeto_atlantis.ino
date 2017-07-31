@@ -109,7 +109,7 @@ float medir_distancia () {
     duration = pulseIn(echoPin, HIGH);
     distance = (duration / 2.0) / 29.1;
 
-    if (distance >= 200 || distance <= 0) {
+    if (distance >= 30 || distance <= 0) {
         Serial.println("fora de alcance");
         return -1.0;
     }

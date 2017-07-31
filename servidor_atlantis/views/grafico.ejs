@@ -1,21 +1,44 @@
 <% include partials/headerGrafico %>
 
-<div class="container gauge">
-  <svg id="fillgauge3" width="30%" height="500" onclick="gauge3.update(NewValue());"></svg>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="container gauge">
+        <svg id="fillgauge3"  height="500" onclick="gauge3.update(NewValue());"></svg>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="temperatura" id='myChart' ng-controller="GraficoController">
+        <style>
+          #myChart {
+          width:100%;
+          height:100%;
+        }
+        .zc-ref {
+          display: none;
+        }
+        </style>
+    </div>
+    </div>
+  </div>
 </div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 
 <script language="JavaScript">
     var config2 = liquidFillGaugeDefaultSettings();
     config2.circleColor = "#07405D";
     config2.textColor = "#06BFAF";
     config2.waveTextColor = "#E8F3F5";
-    config2.waveColor = "#3385B7";
+    config2.waveColor = "#5DF15D";
     config2.circleThickness = 0.1;
     config2.circleFillGap = 0.2;
     config2.textVertPosition = 0.8;
     config2.waveAnimateTime = 2000;
     config2.waveHeight = 0.3;
     config2.waveCount = 1;
+
     var gauge3 = loadLiquidFillGauge("fillgauge3", 60.1, config2);
 
     function NewValue(){
@@ -25,33 +48,27 @@
             return (Math.random()*100).toFixed(1);
         }
     }
-</script>
 
-<script src="/socket.io/socket.io.js"></script>
-<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-
-<script>
-    // var socket = io.connect('http://45.55.170.244:3000');
+  // var socket = io.connect('http://45.55.170.244:3000');
     var socket = io.connect('http://localhost:3000');
       socket.on('medida', function (data) {
         console.log(data);
-        var maxCm = 40;
+        var maxCm = 30;
         var maxPercentual = 100;
-        var cmReal = maxPercentual - ((maxCm - data.medida) * (maxPercentual/maxCm));
-        gauge3.update(cmReal);
+        var cmReal = (maxCm - data.medida) * (maxPercentual/maxCm);
+
+        if(cmReal >= 0 && cmReal <= 29.9 ) {
+          config2.waveColor = "#5DF15D";
+        }  else if(cmReal >= 30 && cmReal <= 50 ) {
+          config2.waveColor = "#FEE039";
+        } else {
+          config2.waveColor = "#D73F23";
+        }
+        gauge3.update(cmReal, config2);
       });
+
 </script>
 
-<div id='myChart' ng-controller="GraficoController">
-    <style>
-      html, body, #myChart {
-        width:100%;
-        height:100%;
-      }
-      .zc-ref {
-        display: none;
-      }
-    </style>
-</div>
+
 
 <% include partials/footer %>

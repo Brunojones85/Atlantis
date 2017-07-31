@@ -193,7 +193,7 @@ function loadLiquidFillGauge(elementId, value, config) {
     }
 
     function GaugeUpdater(){
-        this.update = function(value){
+        this.update = function(value, config){
             var newFinalValue = parseFloat(value).toFixed(2);
             var textRounderUpdater = function(value){ return Math.round(value); };
             if(parseFloat(newFinalValue) != parseFloat(textRounderUpdater(newFinalValue))){
@@ -214,6 +214,22 @@ function loadLiquidFillGauge(elementId, value, config) {
             text2.transition()
                 .duration(config.waveRiseTime)
                 .tween("text", textTween);
+
+                // PERSONALIZAÇÃO MUDA COR
+                text1.transition()
+                    .duration(config.waveRiseTime)
+                    .tween("text", textTween)
+                    .style("fill", config.textColor)
+                text2.transition()
+                    .duration(config.waveRiseTime)
+                    .tween("text", textTween)
+                    .style("fill", config.waveTextColor);
+                fillCircleGroup.select('circle').transition()
+                    .duration(config.waveRiseTime)
+                    .style("fill", config.waveColor);
+                gaugeGroup.select('path').transition()
+                    .duration(config.waveRiseTime)
+                    .style("fill", config.circleColor);
 
             var fillPercent = Math.max(config.minValue, Math.min(config.maxValue, value))/config.maxValue;
             var waveHeight = fillCircleRadius*waveHeightScale(fillPercent*100);
