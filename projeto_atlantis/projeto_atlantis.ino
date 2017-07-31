@@ -108,12 +108,12 @@ float medir_distancia () {
     digitalWrite(trigPin, LOW);
     duration = pulseIn(echoPin, HIGH);
     distance = (duration / 2.0) / 29.1;
-    
+
     if (distance >= 200 || distance <= 0) {
         Serial.println("fora de alcance");
         return -1.0;
     }
-    
+
     Serial.print(distance);
     Serial.println(" cm");
     client.print(distance);
