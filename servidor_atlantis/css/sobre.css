@@ -13,7 +13,7 @@ nav {
 }
 
 body {
-	background: url(../img/satelite.jpeg) no-repeat center center fixed ;
+	background: url(../img/sp_sobre.jpg) no-repeat center center fixed ;
 	-webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -34,4 +34,10 @@ ul {
 
 .thumbnail ul li {
 	font-size: 2em;
+}
+
+.thumbnail{
+	opacity: 0.8;
+	padding-bottom: 10px;
+	border-radius: 25px !important;
 }
