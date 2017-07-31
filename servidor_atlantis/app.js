@@ -46,8 +46,14 @@ app.get("/", function(req, res){
   res.render("index");
 });
 
+//SOBRE ROUTE
 app.get("/sobre", function(req, res){
   res.render("sobre");
+});
+
+//AGRADECIMENTOS ROUTE
+app.get("/agradecimento", function(req, res){
+  res.render("agradecimento");
 });
 
 app.get('/favicon.ico', function(req, res) {

@@ -1,0 +1,54 @@
+
+header {
+	font-family: 'Comfortaa', cursive;
+}
+
+nav {
+	font-family: 'Comfortaa', cursive;
+}
+
+body {
+	background: url(../img/pc.jpg) no-repeat center center fixed ;
+	-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+ul.ninjasEProfs {
+	color: white;
+	list-style-type: none;
+	text-align: center;
+}
+
+ul.ninjasEProfs li {
+ font-size: 20px;
+ font-family: 'Asap', sans-serif;
+}
+
+.ninjasEProfs li {
+	margin-top: 10px;
+}
+
+
+.fa.fa-github-alt {
+	text-align: center;
+	font-size: 2.9em;
+	color: #F3EFF3;
+}
+
+
+.container-fluid.ninja {
+	padding-top: 7%;
+}
+
+.container-fluid.prof {
+	padding-top: 7%;
+}
+
+h2.obrigado {
+	color: #F3EFF3;
+	text-align: center;
+	font-family: 'Asap', sans-serif;
+	padding-top: 2%;
+}

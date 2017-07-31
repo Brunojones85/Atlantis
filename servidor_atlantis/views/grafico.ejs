@@ -1,15 +1,15 @@
 <% include partials/headerGrafico %>
 
 <div class="container gauge">
-  <svg id="fillgauge3" width="19%" height="200" onclick="gauge3.update(NewValue());"></svg>
+  <svg id="fillgauge3" width="30%" height="500" onclick="gauge3.update(NewValue());"></svg>
 </div>
 
 <script language="JavaScript">
     var config2 = liquidFillGaugeDefaultSettings();
-    config2.circleColor = "#D4AB6A";
-    config2.textColor = "#553300";
-    config2.waveTextColor = "#805615";
-    config2.waveColor = "#AA7D39";
+    config2.circleColor = "#07405D";
+    config2.textColor = "#06BFAF";
+    config2.waveTextColor = "#E8F3F5";
+    config2.waveColor = "#3385B7";
     config2.circleThickness = 0.1;
     config2.circleFillGap = 0.2;
     config2.textVertPosition = 0.8;
@@ -41,5 +41,7 @@
         gauge3.update(cmReal);
       });
 </script>
+
+
 
 <% include partials/footer %>
