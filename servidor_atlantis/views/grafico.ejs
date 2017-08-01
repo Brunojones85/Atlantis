@@ -49,8 +49,8 @@
         }
     }
 
-       var socket = io.connect('http://45.55.170.244:3000');
-    // var socket = io.connect('http://localhost:3000');
+      // var socket = io.connect('http://45.55.170.244:3000');
+       var socket = io.connect('http://localhost:3000');
       socket.on('medida', function (data) {
         console.log(data);
         var maxCm = 30;
@@ -58,11 +58,20 @@
         var cmReal = (maxCm - data.medida) * (maxPercentual/maxCm);
 
         if(cmReal >= 0 && cmReal <= 29.9 ) {
-          config2.waveColor = "#5DF15D";
+          config2.waveColor = "#45BF55";
+          config2.circleColor = "#044C29";
+          config2.textColor = "#167F39";
+          config2.waveTextColor = "#97ED8A";
         }  else if(cmReal >= 30 && cmReal <= 50 ) {
           config2.waveColor = "#FEE039";
+          config2.circleColor = "#FAB400";
+          config2.textColor = "#FFF000";
+          config2.waveTextColor = "#FFEB79";
         } else {
-          config2.waveColor = "#D73F23";
+          config2.waveColor = "#EA423F";
+          config2.circleColor = "#E02A24";
+          config2.textColor = "#891A1C";
+          config2.waveTextColor = "#C06466";
         }
         gauge3.update(cmReal, config2);
       });
