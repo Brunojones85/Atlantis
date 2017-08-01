@@ -29,7 +29,7 @@ app.controller("GraficoController", function($scope, $http){
     }
     console.log(rainSP);
     console.log(dataRain);
-    var rainy = parseFloat((((rainSP[0][0]['3h'])*100)/8.9).toFixed(1));
+    var rainy = parseFloat((((rainSP[0][0]['3h']*100)/14.6).toFixed(1)));
 
 
 
