@@ -22,7 +22,7 @@ app.controller("GraficoController", function($scope, $http){
       type: "range",
       backgroundColor : "#ffffff",
       title : {
-        text : "Variação da temperatura em SP",
+        text : "Variação da temperatura",
         backgroundColor : "#ffffff",
         fontColor : "#000"
       },
@@ -58,7 +58,7 @@ app.controller("GraficoController", function($scope, $http){
       guide:{
         marker:{
           type:'triangle',
-          size:7
+          size:1
         },
         plotLabel:{
           headerText:'%kt',
@@ -86,7 +86,7 @@ app.controller("GraficoController", function($scope, $http){
         },
         item : {
           offsetX : "0px",
-          textAlign : "left"
+          textAlign : "center"
         },
         labels : data
       },
@@ -95,8 +95,8 @@ app.controller("GraficoController", function($scope, $http){
           values : tempoMinMax,
           backgroundColor : "#0ce9d1",
           lineColor : "#0ce9d1",
-          text:'São Paulo '
-        }
+          text:'São Paulo'
+        },
       ]
     };
 

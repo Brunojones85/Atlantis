@@ -133,7 +133,7 @@ app.get("/:medida", function(req, res){
   });
 });
 
-server.listen(3000);
+server.listen(8080);
 
 io.on('connection', function (socket) {
   // console.log('novo cliente');
