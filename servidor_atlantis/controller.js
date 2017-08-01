@@ -39,7 +39,7 @@ app.controller("GraficoController", function($scope, $http){
       type: "range",
       backgroundColor : "#ffffff",
       title : {
-        text : "Variação da temperatura",
+        // text : "Variação da temperatura",
         backgroundColor : "#ffffff",
         fontColor : "#000"
       },
@@ -134,7 +134,7 @@ app.controller("GraficoController", function($scope, $http){
         type: "pie",
         labels : [
           {
-            text : "de alagamento em SP\n"+"no dia "+dataRain[0],
+            text : dataRain[0],
             x : "50%",
             y : "62%",
             anchor : "c",

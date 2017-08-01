@@ -3,45 +3,63 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
-      <div class="col-sm-12 col-md-6">
+      <div class="col-sm-12 col-md-6 percentualVolumeCalha">
+        <h3 class="volumeCalha">% volume calha d'água</h3>
+        <div class="col-xm-1 sinal">
+          <ul class="ok">
+            <li><strong>Ok</strong></li>
+          </ul>
+        </div>
+        <div class="col-xm-1 sinal">
+          <ul class="alerta">
+            <li><strong>Alerta</strong></li>
+          </ul>
+        </div>
+        <div class="col-xm-1 sinal">
+          <ul class="perigo">
+            <li><strong>Perigo</strong></li>
+          </ul>
+        </div>
         <div class="container gauge">
-          <svg id="fillgauge3"  height="500"></svg>
+          <svg id="fillgauge3"  height="500px"></svg>
         </div>
       </div>
       <div class="col-sm-12 col-md-6">
+        <h3 class="graficoPrevisao">% previsão de temperatura</h3>
         <div class="temperatura" id='myChart-temperatura' ng-controller="GraficoController">
-          <style>
-            #myChart-temperatura {
-            width:100%;
-            height:100%;
-          }
-          .zc-ref {
-            display: none;
-          }
-          </style>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-12">
-      <div class="col-sm-12 col-md-6">
-		      <div id='myChart-alagamento'>
-            <style>
-              html, body, #myChart-alagamento {
-                width:100%;
-                height:100%;
-              }
-              .zc-ref {
-                display: none;
-              }
-            </style>
-          </div>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <div id='myChart-vento'>
-        </div>
+        <style>
+        #myChart-temperatura {
+          width:100%;
+          height:100%;
+        }
+        .zc-ref {
+          display: none;
+        }
+        </style>
       </div>
     </div>
   </div>
+  <div class="col-sm-12">
+    <div class="col-sm-12 col-md-6">
+      <h3 class="alagamentoGraf">% alagamento na cidade de São Paulo</h3>
+      <div id='myChart-alagamento' class="alagamento">
+      <style>
+      html, body, #myChart-alagamento {
+        width:100%;
+        height:100%;
+      }
+      .zc-ref {
+        display: none;
+      }
+      </style>
+    </div>
+  </div>
+  <div class="col-sm-12 col-md-6">
+    <div id='myChart-vento'>
+    </div>
+  </div>
+</div>
+</div>
 </div>
 
 <script src="/socket.io/socket.io.js"></script>
@@ -49,10 +67,10 @@
 
 <script language="JavaScript">
     var config2 = liquidFillGaugeDefaultSettings();
-    config2.circleColor = "#07405D";
-    config2.textColor = "#06BFAF";
-    config2.waveTextColor = "#E8F3F5";
-    config2.waveColor = "#5DF15D";
+    config2.circleColor = "#363434";
+    config2.textColor = "#727374";
+    config2.waveTextColor = "#969279";
+    config2.waveColor = "#C7C7BE";
     config2.circleThickness = 0.1;
     config2.circleFillGap = 0.2;
     config2.textVertPosition = 0.8;
