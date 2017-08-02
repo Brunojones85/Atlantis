@@ -30,8 +30,24 @@ ul.ninjasEProfs li {
 	margin-top: 10px;
 }
 
+ul.colaboradoras {
+	margin-top: 30px;
+}
+
 
 .fa.fa-github-alt {
+	text-align: center;
+	font-size: 2.9em;
+	color: #F3EFF3;
+}
+
+.fa.fa-linkedin-square {
+	text-align: center;
+	font-size: 2.9em;
+	color: #F3EFF3;
+}
+
+.fa.fa-behance-square {
 	text-align: center;
 	font-size: 2.9em;
 	color: #F3EFF3;
